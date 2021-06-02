@@ -1,0 +1,45 @@
+﻿<Window x:Class="Browser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Browser"
+        xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        mc:Ignorable="d"
+        Title="Express böngésző" Height="700" Width="1100" Loaded="Window_Loaded" Icon="browser.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30px">
+
+            </RowDefinition>
+            <RowDefinition>
+
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40px"></ColumnDefinition>
+                <ColumnDefinition Width="40px"></ColumnDefinition>
+                <ColumnDefinition Width="40px"></ColumnDefinition>
+                <ColumnDefinition Width="40px"></ColumnDefinition>
+                <ColumnDefinition Width="40px"></ColumnDefinition>
+                <ColumnDefinition Width="12*"></ColumnDefinition>
+                <ColumnDefinition Width="40px"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="←" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="40px" Height="30px" BorderThickness="0" Background="Black" Foreground="White" FontSize="18" Click="Button_Click"></Button>
+            <Button Content="→" Grid.Column="1" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="40px" Height="30px" BorderThickness="0" Background="Black" Foreground="White" FontSize="18" Click="Button_Click"></Button>
+            <Button Content="⟳" Grid.Column="2" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="40px" Height="30px" BorderThickness="0" Background="Black" Foreground="White" FontSize="18" Click="Button_Click_1"></Button>
+            <Button Content="x" Grid.Column="3" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="40px" Height="30px" BorderThickness="0" Background="Black" Foreground="White" FontSize="18" Click="Button_Click_2"></Button>
+            <Button Content="⌂" Grid.Column="4" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="40px" Height="30px" BorderThickness="0" Background="Black" Foreground="White" FontSize="18" Click="Button_Click_3"></Button>
+            <TextBox x:Name="textbox" Grid.Column="5" Background="Black" Foreground="White" FontSize="18px" FontWeight="SemiBold" TextAlignment="Center" KeyDown="textbox_KeyDown"></TextBox>
+            <Button x:Name="historygomb" Content="↩" Grid.Column="6" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="40px" Height="30px" BorderThickness="0" Background="Black" Foreground="White" FontSize="18" Click="Button_Click_4" MouseRightButtonUp="Button_MouseRightButtonUp">
+                <Button.ContextMenu>
+                    <ContextMenu x:Name="history"></ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+        </Grid>
+        <Border BorderThickness="1" BorderBrush="Blue"></Border>
+        <cefSharp:ChromiumWebBrowser x:Name="browser" Address="https://www.google.hu" Grid.Row="1"></cefSharp:ChromiumWebBrowser>
+    </Grid>
+</Window>
